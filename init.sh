@@ -11,4 +11,4 @@ rename 's/{PROJECT}/'"$PROJECT"'/' *
 
 git init
 echo "ready to code"
-subl $PROJECT.sublime-project
+subl "$PROJECT.sublime-project"
