@@ -5,7 +5,7 @@ if [[ ! -d ".git" ]]; then
 fi
 rm -rf .git
 
-PROJECT="$(basename $(pwd))"
+PROJECT="$(basename "$(pwd)")"
 rm $0 TODO.md README.md
 rename 's/{PROJECT}/'"$PROJECT"'/' *
 
