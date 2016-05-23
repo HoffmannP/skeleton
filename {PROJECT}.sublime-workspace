@@ -1,15 +1,25 @@
 {
-	"buffers":
-	[
-		{
-			"file": "index.html"
-		},
-		{
-			"file": "css/style.css"
-		},
-		{
-			"file": "js/script.js"
-		}
-	]
+  "buffers": [
+    {
+      "settings": {
+	"buffer_size": 1036,
+	"line_ending: "UNIX"
+      },
+      "file": "index.html"
+    },
+    {
+      "settings": {
+	"buffer_size": 0,
+	"line_ending: "UNIX"
+      },
+      "file": "css/style.css"
+    },
+    {
+      "settings": {
+	"buffer_size": 20,
+	"line_ending: "UNIX"
+      },
+      "file": "js/script.js"
+    }
+  ]
 }
-

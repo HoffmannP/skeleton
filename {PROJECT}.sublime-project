@@ -1,9 +1,10 @@
 {
-	"folders":
-	[
-		{
-			"path": "."
-		}
-	]
+  "folders": [
+    {
+      "file_exclude_patterns": [
+        "*.sublime-*"
+      ],
+      "path": "."
+    }
+  ]
 }
-
