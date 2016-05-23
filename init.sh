@@ -7,4 +7,4 @@ fi
 rm -rf .git
 git init
 echo "ready to code"
-rm $0 TODO
+rm $0 TODO.md README.md
