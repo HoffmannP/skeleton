@@ -1,0 +1,15 @@
+{
+	"buffers":
+	[
+		{
+			"file": "index.html"
+		},
+		{
+			"file": "css/style.css"
+		},
+		{
+			"file": "js/script.js"
+		}
+	]
+}
+
