@@ -6,7 +6,10 @@ import 'uikit/dist/css/uikit.css'
 UIkit.use(Icons)
 
 const app = new App({
-  target: document.body
+  target: document.body,
+  props: {
+    appname: 'Skeleton'
+  }
 })
 
 export default app
