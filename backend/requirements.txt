@@ -1,0 +1,6 @@
+###### Requirements without Version Specifiers ######
+uvicorn
+
+###### Requirements with Version Specifiers ######
+fastapi >= 0.68
+fastapi_utils >= 0.2.1
