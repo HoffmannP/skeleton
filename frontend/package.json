@@ -19,6 +19,7 @@
     "svelte": "^3.48.0"
   },
   "dependencies": {
+    "svelte-feather-icons": "^4.0.0",
     "uikit": "^3.14.1"
   },
   "license": "GPL-3.0-or-later"
