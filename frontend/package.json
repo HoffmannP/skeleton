@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "svelte-feather-icons": "^4.0.0",
+    "svelte-spa-router": "^3.2.0",
     "uikit": "^3.14.1"
   },
   "license": "GPL-3.0-or-later"
