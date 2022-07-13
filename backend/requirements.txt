@@ -1,8 +1,8 @@
 ###### Requirements without Version Specifiers ######
-uvicorn
 # SQLAlchemy
 # asgi-sessions
 
 ###### Requirements with Version Specifiers ######
+uvicorn >= 0.18
 fastapi >= 0.68
 fastapi_utils >= 0.2.1

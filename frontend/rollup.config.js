@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
 import css from 'rollup-plugin-css-only'
 import replace from '@rollup/plugin-replace'
+import html from '@web/rollup-plugin-html'
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -29,7 +30,8 @@ function serve () {
   }
 }
 
-export default {
+export default [
+  {
   input: 'src/main.js',
   output: {
     sourcemap: true,
@@ -85,4 +87,13 @@ export default {
   watch: {
     clearScreen: false
   }
+  }, {
+    input: 'public/*.html',
+    output: { dir: 'public/build/' },
+    plugins: [
+      html({
+        minify: production,
+        publicPath: '/logsearcher'
+      })
+    ]
 }

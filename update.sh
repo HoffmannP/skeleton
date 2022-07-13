@@ -8,6 +8,7 @@ SERVER_NAME=$SERVER/$NAME
 
 (
     cd frontend
+    rm public/build/assets/*
     yarn build
 )
 
