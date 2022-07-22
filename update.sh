@@ -32,6 +32,7 @@ then
 "containers":[{
     "type":"container",
     "image":"$SERVER_NAME:$VERSION",
+    "ports":[{"containerPort":80,"hostPort":0,"type":"containerPort","kind":"NodePort","protocol":"TCP","name":null}],
     "name":"$NAME"
 "name":"$NAME"}
 EOJ
