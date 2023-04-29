@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $NAME
+  namespace: $NAMESPACE
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment-$NAMESPACE-$NAME
+  template:
+    metadata:
+      labels:
+        app: deployment-$NAMESPACE-$NAME
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: $SERVER_NAME
+          imagePullPolicy: Always
+          name: $NAME
+
