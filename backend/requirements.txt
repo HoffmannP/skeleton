@@ -1,6 +1,7 @@
 ###### Requirements without Version Specifiers ######
 # SQLAlchemy
 # asgi-sessions
+watchdog
 
 ###### Requirements with Version Specifiers ######
 uvicorn >= 0.18
