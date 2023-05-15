@@ -5,7 +5,7 @@ set -e
 export SERVER_NAME=$(git remote get-url origin | cut -d@ -f2 | sed -r 's/:/:5050\//;s/.git//')
 export NAME=$(echo $SERVER_NAME | rev | cut -d\/ -f1 | rev)
 export NAMESPACE="default"
-KUBECTL="rancher kubectl --insecure-skip-tls-verify"
+KUBECTL="kubectl"
 
 if [[ "$1" != "--nobuild" ]]
 then
@@ -26,9 +26,9 @@ docker push "$SERVER_NAME:$VERSION"
 if [[ -f "deploy.yaml" ]]
 then
     $KUBECTL -n $NAMESPACE rollout restart deploy $NAME
-    echo "Hallo"
 else
-    cat deploy.yaml.template | envsubst > deploy.yaml
-    rm deploy.yaml.template
-    $KUBECTL -n $NAMESPACE apply -f deploy.yaml
+    cat deploy.yaml.template | envsubst > deploy.yaml # remove
+    rm deploy.yaml.template # remove
+    $KUBECTL -n $NAMESPACE apply -f deploy.yaml # replace
+    sed '/# remove/d;/# replace/s/^.*$/    shift/' update.sh
 fi
