@@ -25,6 +25,11 @@ function set_namespace () {
   sed -i '/export NAMESPACE/s/=".*$/="'"$NAMESPACE"'"/' update.sh
 }
 
+function rename_workspace ()) {
+    project=$(basename $(pwd) | sed 's/[A-Z]/-\0/g;s/^-//' | tr '[A-Z]' '[a-z]'
+    mv skeleton.code-workspace $project.code-workspace
+}
+
 function install_all () {
   (
     cd frontend
@@ -39,3 +44,4 @@ function install_all () {
 install_all
 set_namespace
 reset_git
+rename_workspace
