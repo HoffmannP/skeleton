@@ -1,7 +1,9 @@
+#!env python3
+
+import logging
 import fastapi
 import fastapi.staticfiles
 import uvicorn  # type: ignore
-import logging
 import server
 
 base = fastapi.FastAPI()

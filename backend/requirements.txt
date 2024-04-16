@@ -1,9 +1,7 @@
-###### Requirements without Version Specifiers ######
 # SQLAlchemy
 # asgi-sessions
 watchdog
-
-###### Requirements with Version Specifiers ######
-uvicorn >= 0.18
-fastapi >= 0.68
-fastapi_utils >= 0.2.1
+fastapi
+fastapi_utils
+requests
+uvicorn

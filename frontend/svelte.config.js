@@ -1,16 +1,31 @@
-import adapter from '@sveltejs/adapter-static';
+// import adapter from '@sveltejs/adapter-auto'
+import adapter from '@sveltejs/adapter-static'
+import RemoteAssets from 'vite-plugin-remote-assets'
 
-export default {
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
     kit: {
+    // adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+    // If your environment is not supported or you settled on a specific environment, switch out the adapter.
+    // See https://kit.svelte.dev/docs/adapters for more information about adapters.
         adapter: adapter({
-            pages: 'build',
-            assets: 'build',
-            fallback: null,
-            precompress: false,
-            strict: true
-        }),
-        prerender: {
-            handleHttpError: 'warn'
+      fallback: '200.html'
+    })
+  },
+  plugins: [
+    RemoteAssets()
+  ],
+  onwarn: (warning, handler) => {
+    const IGNORE_WARNINGS = [
+      'a11y-click-events-have-key-events',
+      'a11y-no-static-element-interactions',
+      'a11y-missing-attribute'
+    ]
+    if (IGNORE_WARNINGS.includes(warning.code)) {
+      return
         }
+    handler(warning)
     }
-};
+}
+
+export default config
