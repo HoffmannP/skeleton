@@ -26,3 +26,4 @@ function install_all () {
 
 install_all
 reset_git
+rm $0
