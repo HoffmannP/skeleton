@@ -36,7 +36,7 @@ function create_gitlab () {
         read -p "Token: " GITLAB_TOKEN
     fi
 
-    echo "Creating GitLab repository"
+    echo "Creating GitLab repository" >&2
     http https://$GITLAB_URI/api/v4/projects/ "PRIVATE-TOKEN:$GITLAB_TOKEN" "name=$GITLAB_NAME" |\
         jq -r .ssh_url_to_repo
 }
@@ -48,7 +48,7 @@ function create_github () {
         read -p "Token: " GITHUB_TOKEN
     fi
 
-    echo "Creating GitHub repository"
+    echo "Creating GitHub repository" >&2
     https https://api.github.com/user/repos "Accept:application/vnd.github+json" "X-GitHub-Api-Version:2022-11-28" "Authorization:Bearer $GITHUB_TOKEN" "name=$GITHUB_NAME" |\
         jq -r .git_url
 }
