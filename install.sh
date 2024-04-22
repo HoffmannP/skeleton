@@ -53,9 +53,6 @@ function create_github () {
         jq -r .git_url
 }
 
-create_github
-exit
-
 (
     cd frontend
     npm install
