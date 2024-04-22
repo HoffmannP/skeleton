@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-KUBECTL="kubectl"
-NAMESPACE="default"
+KUBECTL="{{kubecommand cluster}}"
+NAMESPACE="{{namespace}}"
 
 $KUBECTL -n $NAMESPACE apply -f Deployment.yaml
 $KUBECTL -n $NAMESPACE apply -f Services.yaml

@@ -2,22 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: $NAME
-  namespace: $NAMESPACE
+  name: {{dashCase name}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: deployment-$NAMESPACE-$NAME
+      app: {{dashCase name}}
   template:
     metadata:
       labels:
-        app: deployment-$NAMESPACE-$NAME
+        app: {{dashCase name}}
     spec:
       restartPolicy: Always
       containers:
-        - image: $SERVER_NAME
+        - image: %GITURI%
           imagePullPolicy: Always
-          name: $NAME
+          name: {{dashCase name}}
+          ports:
+            - containerPort: 80
       imagePullSecrets:
         - name: gitlab

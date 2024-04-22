@@ -4,10 +4,10 @@ items:
   - apiVersion: v1
     kind: Service
     metadata:
-      name: %APPNAME%
+      name: {{dashCase name}}
     spec:
       selector:
-        app: %APPNAME%
+        app: {{dashCase name}}
       type: NodePort
       ports:
         - port: 80
