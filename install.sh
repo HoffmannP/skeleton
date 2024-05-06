@@ -68,5 +68,5 @@ function create_github () {
     cd backend
     pip install -r requirements.txt
 )
-reset_git
 rm $0
+reset_git
