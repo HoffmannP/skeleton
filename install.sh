@@ -62,6 +62,7 @@ function create_github () {
 
 (
     cd frontend
+    nvm install 20
     npm install
 )
 (
