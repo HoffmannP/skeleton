@@ -1,26 +1,33 @@
 #!/bin/bash
 
 function reset_git () {
+    while [[ -z "$GITURL" ]]
+    do
+        read -p "Git-Repository [\$URL|github|gitlab]: " GITURL
+
+        case "$(echo $GITURL | tr '[A-Z]' '[a-z]')" in
+            "")
+                echo "GITURL should not be empty" >&2
+                ;;
+            gitlab)
+                GITURL=$(create_gitlab)
+                echo "Created $GITURL"
+                ;;
+            github)
+                GITURL=$(create_github)
+                echo "Created $GITURL"
+                ;;
+            *)
+                echo "Using $GITURL as remote URI"
+                ;;
+        esac
+    done
+
     rm -rf .git
 
     git init
     git add -A
     git commit -m 'Init'
-
-    read -p "Git-Repository: " GITURL
-
-    case "$(echo $GITURL | tr '[A-Z]' '[a-z]')" in
-        gitlab)
-            GITURL=$(create_gitlab)
-            ;;
-        github)
-            GITURL=$(create_github)
-            ;;
-        *)
-            echo "Using $GITURL as remote URI"
-            ;;
-    esac
-
     git remote add origin $GITURL
     git push --set-upstream origin main
 }
