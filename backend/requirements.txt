@@ -1,7 +1,20 @@
-# SQLAlchemy
-# asgi-sessions
+black
+pydantic
+pylint
+pytest
 watchdog
+
 fastapi
-fastapi_utils
 requests
-uvicorn
+# fastapi_utils
+# chevron
+# lxml
+# lxml-stubs
+# python-ldap
+# python-multipart
+# redis
+# types-redis
+# requests_toolbelt
+# SQLAlchemy
+# uvicorn
+# webui

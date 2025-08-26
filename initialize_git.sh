@@ -53,13 +53,4 @@ function create_github () {
         jq -r .git_url
 }
 
-(
-    cd frontend
-    npm install
-)
-(
-    cd backend
-    pip install -r requirements.txt
-)
 reset_git
-rm $0

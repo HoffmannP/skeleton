@@ -1,0 +1,36 @@
+stages:
+  - build
+  - deploy
+
+build_image:
+  stage: build
+  image: docker:28
+  tags:
+    - docker
+
+  before_script:
+    - docker info
+    - echo $CI_JOB_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+
+  script:
+    - VERSION="${CI_COMMIT_TAG:-$(date '+%Y-%m-%d_%H-%M')}"
+    - docker build --tag "$CI_REGISTRY_IMAGE:latest" .
+    - docker push "$CI_REGISTRY_IMAGE:latest"
+    - docker tag "$CI_REGISTRY_IMAGE:latest" "$CI_REGISTRY_IMAGE:$VERSION"
+    - docker push "$CI_REGISTRY_IMAGE:$VERSION"
+
+deploy_service:
+  stage: deploy
+  image:
+    name: alpine/helm:3
+    entrypoint: [""]
+  rules:
+    - if: $CI_COMMIT_TAG
+
+  variables:
+    NAMESPACE: default
+    KUBECONFIG: .secure_files/config
+
+  script:
+    - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/download-secure-files/-/raw/main/installer" | bash
+    - helm upgrade --install -f helm/values.yaml --namespace $NAMESPACE --set COMMIT_TAG=$CI_COMMIT_TAG --set-string image.repository=$CI_REGISTRY_IMAGE $CI_PROJECT_NAME ./helm
